@@ -4,7 +4,7 @@
     "width": 500,
     "title": "Safety in Popular Cities in Malaysia",
     "data": {
-      "url": "https://example.com/safety_in_malaysia.csv",
+      "url": "https://raw.githubusercontent.com/AbbiramiJegan/Homework-10/refs/heads/main/data/Safety%20in%20Malaysia.csv",
       "format": {"type": "csv"}
     },
     "mark": "point",
@@ -13,15 +13,25 @@
         "field": "Daylight Safety",
         "type": "quantitative",
         "title": "Daylight Safety",
-        "axis": {"tickCount": 10},
-        "scale": {"type": "linear"}
+        "axis": {
+          "tickCount": 10
+        },
+        "scale": {
+          "type": "linear",
+          "domain": [0, 100] 
+        }
       },
       "y": {
         "field": "Night Safety",
         "type": "quantitative",
         "title": "Night Safety",
-        "axis": {"tickCount": 10},
-        "scale": {"type": "linear"}
+        "axis": {
+          "tickCount": 10
+        },
+        "scale": {
+          "type": "linear",
+          "domain": [0, 100] 
+        }
       },
       "color": {
         "field": "City",
