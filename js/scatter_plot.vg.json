@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 500,
+    "width": 500,
+    "title": "Safety in Popular Cities in Malaysia",
+    "data": {
+      "url": "https://example.com/safety_in_malaysia.csv",
+      "format": {"type": "csv"}
+    },
+    "mark": "point",
+    "encoding": {
+      "x": {
+        "field": "Daylight Safety",
+        "type": "quantitative",
+        "title": "Daylight Safety",
+        "axis": {"tickCount": 10},
+        "scale": {"type": "linear"}
+      },
+      "y": {
+        "field": "Night Safety",
+        "type": "quantitative",
+        "title": "Night Safety",
+        "axis": {"tickCount": 10},
+        "scale": {"type": "linear"}
+      },
+      "color": {
+        "field": "City",
+        "type": "nominal",
+        "legend": {"title": "Cities"}
+      },
+      "tooltip": [
+        {"field": "City", "type": "nominal"},
+        {"field": "Daylight Safety", "type": "quantitative", "format": ".2f"},
+        {"field": "Night Safety", "type": "quantitative", "format": ".2f"}
+      ]
+    }
+  }
+  
