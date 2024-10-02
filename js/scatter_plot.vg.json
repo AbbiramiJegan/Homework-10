@@ -1,48 +1,71 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "height": 500,
-    "width": 500,
-    "title": "Safety in Popular Cities in Malaysia",
-    "data": {
-      "url": "https://raw.githubusercontent.com/AbbiramiJegan/Homework-10/refs/heads/main/data/Safety%20in%20Malaysia.csv",
-      "format": {"type": "csv"}
-    },
-    "mark": "point",
-    "encoding": {
-      "x": {
-        "field": "Daylight Safety",
-        "type": "quantitative",
-        "title": "Daylight Safety",
-        "axis": {
-          "tickCount": 10
-        },
-        "scale": {
-          "type": "linear",
-          "domain": [0, 100] 
-        }
-      },
-      "y": {
-        "field": "Night Safety",
-        "type": "quantitative",
-        "title": "Night Safety",
-        "axis": {
-          "tickCount": 10
-        },
-        "scale": {
-          "type": "linear",
-          "domain": [0, 100] 
-        }
-      },
-      "color": {
-        "field": "City",
-        "type": "nominal",
-        "legend": {"title": "Cities"}
-      },
-      "tooltip": [
-        {"field": "City", "type": "nominal"},
-        {"field": "Daylight Safety", "type": "quantitative", "format": ".2f"},
-        {"field": "Night Safety", "type": "quantitative", "format": ".2f"}
-      ]
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "height": 400,
+  "width": 400,
+  "title": "Safety in Popular Cities in Malaysia",
+  "data": {
+    "url": "https://raw.githubusercontent.com/AbbiramiJegan/Homework-10/refs/heads/main/data/Safety%20in%20Malaysia.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "regionFilter",
+      "bind": {
+        "input": "select",
+        "options": [
+          null, "North", "South", "East", "West"
+        ],
+        "labels": [
+          "All", "North Malaysia", "South Malaysia", "East Malaysia", "West Malaysia"
+        ],
+        "name": "Select Region: "
+      }
     }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Region !== null"
+    },
+    {
+      "filter": "regionFilter == null || datum.Region == regionFilter"
+    }
+  ],
+  "mark": "point",
+  "encoding": {
+    "x": {
+      "field": "Daylight Safety",
+      "type": "quantitative",
+      "title": "Daylight Safety",
+      "axis": {
+        "tickCount": 10
+      },
+      "scale": {
+        "type": "linear",
+        "domain": [0, 100]
+      }
+    },
+    "y": {
+      "field": "Night Safety",
+      "type": "quantitative",
+      "title": "Night Safety",
+      "axis": {
+        "tickCount": 10
+      },
+      "scale": {
+        "type": "linear",
+        "domain": [0, 100]
+      }
+    },
+    "color": {
+      "field": "City",
+      "type": "nominal",
+      "legend": {"title": "Cities"}
+    },
+    "tooltip": [
+      {"field": "City", "type": "nominal"},
+      {"field": "Daylight Safety", "type": "quantitative", "format": ".2f"},
+      {"field": "Night Safety", "type": "quantitative", "format": ".2f"},
+      {"field": "Region", "type": "nominal"} 
+    ]
   }
-  
+}
