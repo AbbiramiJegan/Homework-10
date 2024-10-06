@@ -30,42 +30,75 @@
       "filter": "regionFilter == null || datum.Region == regionFilter"
     }
   ],
-  "mark": "point",
-  "encoding": {
-    "x": {
-      "field": "Daylight Safety",
-      "type": "quantitative",
-      "title": "Daylight Safety",
-      "axis": {
-        "tickCount": 10
-      },
-      "scale": {
-        "type": "linear",
-        "domain": [0, 100]
+  "layer": [
+    {
+      "mark": "point",
+      "encoding": {
+        "x": {
+          "field": "Daylight Safety",
+          "type": "quantitative",
+          "title": "Daylight Safety",
+          "axis": {
+            "tickCount": 10
+          },
+          "scale": {
+            "type": "linear",
+            "domain": [0, 100]
+          }
+        },
+        "y": {
+          "field": "Night Safety",
+          "type": "quantitative",
+          "title": "Night Safety",
+          "axis": {
+            "tickCount": 10
+          },
+          "scale": {
+            "type": "linear",
+            "domain": [0, 100]
+          }
+        },
+        "color": {
+          "field": "City",
+          "type": "nominal",
+          "legend": {"title": "Cities"}
+        },
+        "tooltip": [
+          {"field": "City", "type": "nominal"},
+          {"field": "Daylight Safety", "type": "quantitative", "format": ".2f"},
+          {"field": "Night Safety", "type": "quantitative", "format": ".2f"},
+          {"field": "Region", "type": "nominal"}
+        ]
       }
     },
-    "y": {
-      "field": "Night Safety",
-      "type": "quantitative",
-      "title": "Night Safety",
-      "axis": {
-        "tickCount": 10
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "color": "black",
+        "font": "Arial",
+        "fontSize":10
       },
-      "scale": {
-        "type": "linear",
-        "domain": [0, 100]
+      "encoding": {
+        "x": {"value": 230},
+        "y": {"value": 280},
+        "text": {"value": "Capital City of Malaysia "}
       }
     },
-    "color": {
-      "field": "City",
-      "type": "nominal",
-      "legend": {"title": "Cities"}
-    },
-    "tooltip": [
-      {"field": "City", "type": "nominal"},
-      {"field": "Daylight Safety", "type": "quantitative", "format": ".2f"},
-      {"field": "Night Safety", "type": "quantitative", "format": ".2f"},
-      {"field": "Region", "type": "nominal"} 
-    ]
-  }
+    {
+      "mark":{
+        "type": "text",
+        "align": "left",
+        "color": "black",
+        "font": "Arial",
+        "fontSize":10
+      },
+      "encoding": {
+        "x": {"value": 230},
+        "y": {"value": 295},
+        "text": {"value": "has a very low night safety of 30%"}
+      }
+    }
+
+  ]
 }
